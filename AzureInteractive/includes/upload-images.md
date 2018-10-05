@@ -2,19 +2,19 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: functions
-author: tdykstra
+author: ggailey777
 manager: jeconnoc
 ms.service: multiple
 ms.topic: include
 ms.date: 06/21/2018
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 56cfb4c2893977086309660f4f6941fd0d648913
-ms.sourcegitcommit: e721422a57e6deb95245135fd9f4f5677c344d93
+ms.openlocfilehash: 51c7d3e64424d499b473f3b138ce249a9cfd0182
+ms.sourcegitcommit: 81587470a181e314242c7a97cd0f91c82d4fe232
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "40079244"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47460075"
 ---
 Aplikace, kterou vytváříte, je fotogalerie. Pomocí JavaScriptu na straně klienta volá rozhraní API za účelem nahrání a zobrazení obrázků. V tomto modulu vytvoříte rozhraní API s funkcí bez serveru, která vygeneruje časově omezenou adresu URL pro nahrání obrázku. Webová aplikace použije vygenerovanou adresu URL k nahrání obrázku do úložiště objektů blob pomocí [rozhraní REST API úložiště objektů Blob](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
@@ -36,12 +36,21 @@ Azure Functions je služba umožňující spouštění funkcí bez serveru. Funk
 
 Aplikace funkcí Azure je kontejner pro jednu nebo několik funkcí bez serveru.
 
-1. Vytvořte novou aplikaci funkcí Azure s jedinečným názvem **first-serverless-app** ve skupině prostředků, kterou jste vytvořili dříve. Aplikace funkcí vyžaduje účet úložiště. V tomto kurzu použijete existující účet úložiště.
+Vytvořte novou aplikaci funkcí Azure s jedinečným názvem **first-serverless-app** ve skupině prostředků, kterou jste vytvořili dříve. Aplikace funkcí vyžaduje účet úložiště. V tomto kurzu použijete existující účet úložiště.
 
-    ```azurecli
-    az functionapp create -n <function app name> -g first-serverless-app -s <storage account name> -c westcentralus
-    ```
+```azurecli
+az functionapp create -n <function app name> -g first-serverless-app -s <storage account name> -c westcentralus
+```
 
+## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
+
+Aplikace funkcí v tomto kurzu vyžaduje modul runtime služby Functions verze 1.x. Nastavení aplikace `FUNCTIONS_WORKER_RUNTIME` na `~1` připne aplikaci funkcí k nejnovější verzi 1.x. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte nastavení aplikace.
+
+V následujícím příkazu Azure CLI je <app_name> název vaší aplikace funkcí.
+
+```azurecli
+az functionapp config appsettings set --name <function app name> --g first-serverless-app --settings FUNCTIONS_WORKER_RUNTIME=~1
+```
 
 ## <a name="create-an-http-triggered-serverless-function"></a>Vytvoření funkce bez serveru aktivované protokolem HTTP
 
