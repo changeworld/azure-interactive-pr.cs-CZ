@@ -6,15 +6,15 @@ author: ggailey777
 manager: jeconnoc
 ms.service: multiple
 ms.topic: include
-ms.date: 06/21/2018
+ms.date: 10/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 51c7d3e64424d499b473f3b138ce249a9cfd0182
-ms.sourcegitcommit: 81587470a181e314242c7a97cd0f91c82d4fe232
+ms.openlocfilehash: 3779c2e130afa7ee8d5879f30a924e258b7a41e9
+ms.sourcegitcommit: fdb43556b8dcf67cb39c18e532b5fab7ac53eaee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47460075"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49315972"
 ---
 Aplikace, kterou vytváříte, je fotogalerie. Pomocí JavaScriptu na straně klienta volá rozhraní API za účelem nahrání a zobrazení obrázků. V tomto modulu vytvoříte rozhraní API s funkcí bez serveru, která vygeneruje časově omezenou adresu URL pro nahrání obrázku. Webová aplikace použije vygenerovanou adresu URL k nahrání obrázku do úložiště objektů blob pomocí [rozhraní REST API úložiště objektů Blob](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
@@ -44,12 +44,12 @@ az functionapp create -n <function app name> -g first-serverless-app -s <storage
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
 
-Aplikace funkcí v tomto kurzu vyžaduje modul runtime služby Functions verze 1.x. Nastavení aplikace `FUNCTIONS_WORKER_RUNTIME` na `~1` připne aplikaci funkcí k nejnovější verzi 1.x. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte nastavení aplikace.
+Aplikace funkcí v tomto kurzu vyžaduje modul runtime služby Functions verze 1.x. Nastavení aplikace `FUNCTIONS_EXTENSION_VERSION` na `~1` připne aplikaci funkcí k nejnovější verzi 1.x. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte nastavení aplikace.
 
 V následujícím příkazu Azure CLI je <app_name> název vaší aplikace funkcí.
 
 ```azurecli
-az functionapp config appsettings set --name <function app name> --g first-serverless-app --settings FUNCTIONS_WORKER_RUNTIME=~1
+az functionapp config appsettings set --name <function app name> --g first-serverless-app --settings FUNCTIONS_EXTENSION_VERSION=~1
 ```
 
 ## <a name="create-an-http-triggered-serverless-function"></a>Vytvoření funkce bez serveru aktivované protokolem HTTP
