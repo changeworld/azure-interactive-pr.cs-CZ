@@ -49,7 +49,7 @@ Aplikace funkcí v tomto kurzu vyžaduje modul runtime služby Functions verze 1
 V následujícím příkazu Azure CLI je <app_name> název vaší aplikace funkcí.
 
 ```azurecli
-az functionapp config appsettings set --name <function app name> --g first-serverless-app --settings FUNCTIONS_EXTENSION_VERSION=~1
+az functionapp config appsettings set --name <function app name> -g first-serverless-app --settings FUNCTIONS_EXTENSION_VERSION=~1
 ```
 
 ## <a name="create-an-http-triggered-serverless-function"></a>Vytvoření funkce bez serveru aktivované protokolem HTTP
